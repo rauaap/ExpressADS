@@ -4,6 +4,7 @@ const wsInstance = require('express-ws')(app);
 const ads = require('./ads');
 
 app.use(express.json())
+app.use(express.static('build'))
 
 app.ws('/ws', (ws, req) => {
     ws.on('message', (msg) => {
@@ -62,7 +63,7 @@ app.post('/write', (req, res) => {
     });
 });
 
-app.get('/', (req, res) => res.status(200).send('<style>body {background-color: black}</style>'));
+// app.get('/', (req, res) => res.status(200).send('<style>body {background-color: black}</style>'));
 
 module.exports = {
     app
