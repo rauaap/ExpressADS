@@ -13,7 +13,8 @@ app.ws('/ws', (ws, req) => {
             ( { symbolPath, interval } = JSON.parse(msg) );
         }
         catch {
-            res.status(400).send(JSON.stringify({ message: 'Invalid data' }));
+            ws.send(JSON.stringify({ message: 'Invalid data' }));
+            return;
         }
 
         if (!symbolPath) {
